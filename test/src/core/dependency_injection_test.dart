@@ -43,4 +43,25 @@ void main() {
       expect(runWithDevTools(() => result), result);
     });
   });
+
+  group("getNetworkCollector Test", () {
+    test('getNetworkCollector return collector form current zone', () {
+      final collector = NetworkCollector();
+      expect(
+        runWithDevTools(() => getNetworkCollector(), networkCollector: collector),
+        equals(collector),
+      );
+    });
+
+    test('getNetworkCollector return collector form current zone', () {
+      expect(
+        () {
+          getNetworkCollector();
+        },
+        throwsA(
+          isA<AssertionError>(),
+        ),
+      );
+    });
+  });
 }
