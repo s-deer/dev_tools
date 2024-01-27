@@ -2,7 +2,7 @@ import 'package:dev_tools/src/core/core.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('NetworkCollector Tests', () {
+  group('NetworkCollector', () {
     late NetworkCollector networkCollector;
 
     setUp(() {
