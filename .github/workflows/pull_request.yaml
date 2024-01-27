@@ -1,0 +1,28 @@
+name: Pull Request
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 👮 Setup fvm
+        uses: kuhnroyal/flutter-fvm-config-action@v1
+
+      - name: 🖥️ Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: ${{ env.FLUTTER_CHANNEL }}
+
+      - name: ⬇️Install dependencies
+        run: dart pub get
+
+      - name: 🧪 Test
+        run: flutter test
