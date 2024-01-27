@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:dev_tools/src/core/core.dart';
 
 void main() {
-  group("runWithDevTools Tests", () {
-    test('runWithDevTools runs the provided function in a zone', () {
+  group("runWithDevTools", () {
+    test('runs the provided function in a zone', () {
       var executed = false;
 
       runWithDevTools(() {
@@ -15,7 +15,7 @@ void main() {
       expect(executed, isTrue);
     });
 
-    test('runWithDevTools sets networkCollector in the zone values', () {
+    test('sets networkCollector in the zone values', () {
       final networkCollector = NetworkCollector();
 
       runWithDevTools(() {
@@ -25,7 +25,7 @@ void main() {
       }, networkCollector: networkCollector);
     });
 
-    test('runWithDevTools uses a default NetworkCollector if none is provided', () {
+    test('uses a default NetworkCollector if none is provided', () {
       runWithDevTools(() {
         var collectorInZone = Zone.current[#networkCollector];
 
@@ -33,19 +33,19 @@ void main() {
       });
     });
 
-    test('runWithDevTools propagates exceptions thrown in the body', () {
+    test('propagates exceptions thrown in the body', () {
       expect(() => runWithDevTools(() => throw Exception('Test Exception')), throwsException);
     });
 
-    test('runWithDevTools return result from callback', () {
+    test('return result from callback', () {
       const result = 'result';
 
       expect(runWithDevTools(() => result), result);
     });
   });
 
-  group("getNetworkCollector Test", () {
-    test('getNetworkCollector return collector form current zone', () {
+  group("getNetworkCollector", () {
+    test('return collector form current zone', () {
       final collector = NetworkCollector();
       expect(
         runWithDevTools(() => getNetworkCollector(), networkCollector: collector),

@@ -2,7 +2,7 @@ import 'package:dev_tools/src/utils/utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('BehaviorSubject Tests', () {
+  group('BehaviorSubject', () {
     test('Initial value is emitted upon subscription', () {
       final subject = BehaviorSubject<int>(42);
 
