@@ -38,7 +38,7 @@ class PartValue<T> extends Equatable {
   List<Object?> get props => [name, value];
 }
 
-class PartValueFile extends PartValue<MultiPartFile> with EquatableMixin {
+class PartValueFile extends PartValue<MultiPartFile> {
   const PartValueFile({
     required super.name,
     super.value,

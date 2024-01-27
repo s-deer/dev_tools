@@ -14,6 +14,18 @@ class NetworkEntry extends Equatable {
     this.error,
   });
 
+  bool get isFailed {
+    if (response != null) {
+      return response!.status >= 400;
+    }
+
+    return error != null;
+  }
+
+  bool get isProcessing {
+    return error == null && response == null;
+  }
+
   NetworkEntry copyWith({
     Object? id,
     Request? request,
@@ -27,7 +39,7 @@ class NetworkEntry extends Equatable {
       error: error ?? this.error,
     );
   }
-  
+
   @override
   List<Object?> get props => [id, request, response, error];
 }
